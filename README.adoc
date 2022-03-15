@@ -30,6 +30,28 @@ ESEMPIO COMPLETO COMANDO:
 oc new-app registry.access.redhat.com/ubi8/dotnet-60~https://github.com/redhat-developer/s2i-dotnetcore-ex#dotnet-6.0 --context-dir=app --name=test-dotnet -l app=test-dotnet --as-deployment-config
 ----
 
+Aumento delle risorse della build
+
+[source]
+----
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+.....
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'test-dotnet:latest'
+  resources:
+    limits:
+      cpu: 500m
+      memory: 768Mi
+    requests:
+      cpu: 50m
+      memory: 512Mi
+----
+
 == Deploy using the OpenShift Do ('odo')
 
 [source]
