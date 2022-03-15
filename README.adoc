@@ -22,6 +22,14 @@ $ oc expose service s2i-dotnetcore-ex
 $ oc get route s2i-dotnetcore-ex
 ----
 NOTA: Vedi registry.access.redhat.com/ubi8/dotnet-60 o registry.redhat.io/rhel8/dotnet-60:6.0-8
+
+ESEMPIO COMPLETO COMANDO:
+
+[source]
+----
+oc new-app registry.access.redhat.com/ubi8/dotnet-60~https://github.com/redhat-developer/s2i-dotnetcore-ex#dotnet-6.0 --context-dir=app --name=test-dotnet -l app=test-dotnet --as-deployment-config
+----
+
 == Deploy using the OpenShift Do ('odo')
 
 [source]
